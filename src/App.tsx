@@ -285,11 +285,11 @@ const App: React.Component = () => {
       new window.Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['FCHS Año 1', 'FCHS Año 4', 'Universidad Privada Elite', 'Universidad Pública Promedio'],
+          labels: ['FCHS Año 1', 'FCHS Año 4', 'Universidad Pública Promedio'],
           datasets: [{
             label: 'Costo por estudiante (Millones COP)',
-            data: [89.9, 35.9, 250, 15],
-            backgroundColor: [colors.red, colors.yellow, colors.blue, colors.green]
+            data: [89.9, 35.9, 15],
+            backgroundColor: [colors.red, colors.yellow, colors.green]
           }]
         },
         options: {
@@ -963,9 +963,6 @@ const App: React.Component = () => {
                 <div className="relative h-80 mb-5">
                   <canvas id="costComparisonChart"></canvas>
                 </div>
-                <p className="text-sm text-gray-600">
-                  <strong>Contexto:</strong> El costo de una carrera completa en universidad privada de élite oscila entre $200-300 millones.
-                </p>
               </div>
             </div>
           </div>
@@ -1422,6 +1419,51 @@ const App: React.Component = () => {
               </div>
             </div>
           </div>
+          
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+            <div className="p-6 border-b border-gray-200">
+              <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-3">
+                <i className="fas fa-comments text-[#94B43B]"></i>
+                Comentarios y Observaciones de la Encuesta
+              </h3>
+            </div>
+            <div className="p-6">
+              <div className="mb-8">
+                <h4 className="text-lg font-bold text-red-700 mb-4">Comentarios de Docentes en Desacuerdo</h4>
+                <div className="space-y-3 text-sm text-gray-700">
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">CREO QUE NO ES PERTINENTE Y EL DINERO PUBLICO NO PUEDE INVERTIRSE EN CAPRICHITOS DE UNOS DOCENTES ABURRIDOS</p>
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">La actual administración no ha sido clara con los procesos y los recursos, además es proceso inequitativo frente a como se han desarrollado históricamente contrataciones y programas en otras facultades.</p>
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Es un propuesta inmediatista, llena incongruencias y elaborada sin rigor académico y técnico.</p>
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">La propuesta carece de rigor académico. No hace un análisis real de las necesidades de formación regionales ni en las áreas de ciencias humanas ni de ciencias sociales. Tampoco toma en cuenta los altos índices de desempleo que actualmente existen en dicho campo de conocimiento. Por otro lado, y no menos grave, no expone con claridad sus sostenibilidad en términos de los recursos requeridos que hacen base presupuestal; es decir, no se sabe de dónde van a sacar las plazas de profesores de tiempo completo que se requieren para ofrecer una docencia de calidad. El presupuesto que supuestamente un a asignar no aumenta la base presupuestal; es decir, una vez se gaste no se seba qué pasará con los profesores a contratar. Así mismo, el proyecto carece de estudios adecuados de impacto en planta física, aumento en los servicios de bienestar y su costo, etc. Realmente la propuesta parece ser más una intención personal de un grupo de profesores con ansias de poder o, en otras palabras, con ansias de ser decanos.</p>
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Propuesta con grandes debilidades misionales (investigacion, extension, docencia), con estándares muy bajos.Preocupante.</p>
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Financiación, planta docente, pertinencia académica (considerando enfoque humanístico que ya tiene la Universidad de Caldas)</p>
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Debemos fortalecer las facultades que ya tenemos, la creación de una nueva generará más complejidades de todo tipo empezando por lo presupuestal y la infraestructura requerida.</p>
+                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">No se ha socializado con la comunidad profesoral en los departamentos y facultades.</p>
+                </div>
+              </div>
+              <div className="mb-8">
+                <h4 className="text-lg font-bold text-yellow-700 mb-4">Comentarios de Docentes con Dudas</h4>
+                <div className="space-y-3 text-sm text-gray-700">
+                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">Me preocupa la sostenibilidad financiera a futuro de la Facultad y la tibia proposición de innovación.</p>
+                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">La creación de una Facultad debe responder a necesidades académicas, contextuales, y pertinentes reales, no a promesas electoreras de las directivas que desconocen el devenir de un saber que posee una la memoria histórica...</p>
+                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">Financiación del nuevo programa</p>
+                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">NO existe ningún documento seriamente elaborado, con información rigurosa, que permita inferir si la creación de la Facultad es o no una idea necesaria para la sociedad, financieramente sostenible y académicamente pertinente.</p>
+                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">Considero que hace falta una discusión más profunda sobre la pertinencia o no de la facultad mencionada, con el rigor académico que amerita la universidad.</p>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-lg font-bold text-green-700 mb-4">Comentarios de Docentes de Acuerdo</h4>
+                <div className="space-y-3 text-sm text-gray-700">
+                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Es fundamental que se cree esta Facultad, no solo para la sede, sino para la ciudad e incluso para la región.</p>
+                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Que no se vean afectadas las Facultades existentes, es decir, que no afecte la solicitud de presupuesto, instalaciones, laboratorios y personal en las facultades existentes, y que se garanticen nuevos recursos para la Sede...</p>
+                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Sin observaciones</p>
+                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Tenemos una sede con base en las ciencias duras, que requieren una visión humanista,la cual escacea en la mayoría de programas,será de gran utilidad ampliar esos horizontes desde una perspectiva de un facultad cómo.la que se proponeEl mundo requiere de más humanismo y menos mercantilismo</p>
+                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Falta capacidad-racionalidad en una minoría de profesores/as en entender la importancia de la creación de facultad de Ciencias Humanas y sociales, priorizando así la explosión emocional/hormonal en vez de la razónApertura de cupos, nuevas carreras, crecimiento de la región (y de la universidad).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
           <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
             <div className="p-6 border-b border-gray-200">
@@ -1656,118 +1698,118 @@ const App: React.Component = () => {
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
                 <div className="space-y-1">
-                  <div className="p-2 bg-gray-50 rounded">docente001@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente002@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente003@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente004@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente005@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente006@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente007@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente008@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente009@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente010@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente011@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente012@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente013@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente014@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente015@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente016@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente017@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente018@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente019@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente020@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente021@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente022@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente023@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente024@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente025@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente026@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente027@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente028@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente029@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente030@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente031@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente032@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente033@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente034@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente035@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente036@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ikcollazoss@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">vevalenciam@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">gmedinaar@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">nprietoc@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jdmarinj@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">cmurillo@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">pfmarinc@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">javieiras@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">laramirezc@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">bsegurag@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">wasarachec@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">azapatago@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">morozcoa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jjvelezu@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">pchang@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jhramirezfra@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">wrlopez@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">apagudelosa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">fjvalenciad@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">lfcorteshe@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ubustamantel@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">oemezaa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">anfrojasgo@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">gacastanod@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">odcardonaa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jhestradae@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">osccorreac@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">frinconc@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">carangol@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">eflunan@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">cyounesv@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">nmontoyamo@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jehurtadog@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jagalindod@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ratolosac@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">lmzuluagag@unal.edu.co</div>
                 </div>
                 <div className="space-y-1">
-                  <div className="p-2 bg-gray-50 rounded">docente037@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente038@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente039@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente040@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente041@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente042@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente043@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente044@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente045@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente046@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente047@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente048@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente049@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente050@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente051@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente052@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente053@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente054@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente055@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente056@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente057@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente058@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente059@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente060@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente061@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente062@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente063@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente064@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente065@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente066@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente067@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente068@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente069@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente070@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente071@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente072@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">lfcastilloos@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">sruizhe@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jdzambranona@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ndgonzalezho@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jcrianoro@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ffserranos@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">fjgarciaor@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jfontalvoa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">amarulandam@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">rrovira@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">amgiraldoo@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">flfrancoi@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">lrvasquezv@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">daalvarez@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">lilopezv@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">dosoriob@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">gadabbracciok@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">rbetancourtg@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">lpgiraldov@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">cemejiac@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">lmvelasqueza@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">oaprador@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">dtflorezq@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">dmcardenasa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">daescobarga@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">paescandon@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jhparrasa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jasepulvedag@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">japaredesl@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">daariast@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">caruizvi@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">mapantojao@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jmcastanom@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">erestrepopa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ppinedag@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">mebecerrah@unal.edu.co</div>
                 </div>
                 <div className="space-y-1">
-                  <div className="p-2 bg-gray-50 rounded">docente073@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente074@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente075@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente076@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente077@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente078@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente079@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente080@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente081@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente082@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente083@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente084@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente085@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente086@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente087@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente088@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente089@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente090@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente091@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente092@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente093@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente094@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente095@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente096@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente097@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente098@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente099@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente100@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente101@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente102@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente103@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente104@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente105@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente106@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente107@unal.edu.co</div>
-                  <div className="p-2 bg-gray-50 rounded">docente108@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ohgiraldoo@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ejvillegasj@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">fhlopezv@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">csalazaro@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jbuitragoa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">bjruizm@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ceorregoa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jchiguitav@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">geescobara@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jcgarciaa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jjsepulvedal@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">gidarragap@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">omdiazb@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">amalvarezme@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">nguerrerog@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">saariasgu@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">dahlopezgar@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">alvgomezp@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">ghbarrenecher@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">fagonzalez@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">aflopezv@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">eduquees@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">asepulvedag@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jcnaranjov@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">vmejiaa@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">cabermudezm@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">tgiraldoo@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">fnjimenezg@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jafigueroaf@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jubastidasr@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">jdagudeloc@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">snrodriguezba@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">wmliconac@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">cmendozab@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">shernandezn@unal.edu.co</div>
+                  <div className="p-2 bg-gray-50 rounded">leavendano@unal.edu.co</div>
                 </div>
               </div>
             </div>
@@ -1779,30 +1821,13 @@ const App: React.Component = () => {
                 <i className="fas fa-times-circle text-[#94B43B]"></i>
                 Correos Eliminados por No Pertenecer a la Sede
               </h3>
-              <p className="text-sm text-gray-600 mt-1">15 respuestas eliminadas por no corresponder a docentes activos de la Sede Manizales</p>
+              <p className="text-sm text-gray-600 mt-1">Respuestas eliminadas por no corresponder a docentes activos de la Sede Manizales</p>
             </div>
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
                 <div className="space-y-1">
-                  <div className="p-2 bg-red-50 rounded border border-red-200">externo001@gmail.com</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">jubilado002@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">bogota003@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">medellin004@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">externo005@hotmail.com</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="p-2 bg-red-50 rounded border border-red-200">palmira006@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">externo007@yahoo.com</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">jubilado008@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">estudiante009@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">externo010@gmail.com</div>
-                </div>
-                <div className="space-y-1">
-                  <div className="p-2 bg-red-50 rounded border border-red-200">amazonia011@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">externo012@outlook.com</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">caribe013@unal.edu.co</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">externo014@gmail.com</div>
-                  <div className="p-2 bg-red-50 rounded border border-red-200">tumaco015@unal.edu.co</div>
+                  <div className="p-2 bg-red-50 rounded border border-red-200">sprojasb@unal.edu.co</div>
+                  <div className="p-2 bg-red-50 rounded border border-red-200">albertoantonioagudeloaguirre@gmail.com</div>
                 </div>
               </div>
             </div>
@@ -1850,20 +1875,6 @@ const App: React.Component = () => {
                     <div>
                       <strong>Encuesta Profesoral</strong>
                       <p className="text-sm text-gray-600">108 respuestas válidas</p>
-                    </div>
-                  </li>
-                  <li className="flex items-center p-3 border-b border-gray-100">
-                    <i className="fas fa-file-word text-blue-600 mr-3"></i>
-                    <div>
-                      <strong>Análisis Final</strong>
-                      <p className="text-sm text-gray-600">7 puntos críticos</p>
-                    </div>
-                  </li>
-                  <li className="flex items-center p-3">
-                    <i className="fas fa-file-alt text-gray-600 mr-3"></i>
-                    <div>
-                      <strong>Preguntas Técnicas</strong>
-                      <p className="text-sm text-gray-600">FCHS Manizales.docx</p>
                     </div>
                   </li>
                 </ul>
