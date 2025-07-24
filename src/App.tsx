@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
 
 declare global {
@@ -8,6 +8,97 @@ declare global {
 }
 
 const App: React.Component = () => {
+  const [visibleComments, setVisibleComments] = useState('todos');
+
+  // Datos de los comentarios extraídos del documento
+  const allComments = [
+    { type: 'desacuerdo', text: 'CREO QUE NO ES PERTINENTE Y EL DINERO PUBLICO NO PUEDE INVERTIRSE EN CAPRICHITOS DE UNOS DOCENTES ABURRIDOS' },
+    { type: 'desacuerdo', text: 'La actual administración no ha sido clara con los procesos y los recursos, además es proceso inequitativo frente a como se han desarrollado históricamente contrataciones y programas en otras facultades.' },
+    { type: 'desacuerdo', text: 'Es un propuesta inmediatista, llena incongruencias y elaborada sin rigor académico y técnico.' },
+    { type: 'desacuerdo', text: 'La propuesta carece de rigor académico. No hace un análisis real de las necesidades de formación regionales ni en las áreas de ciencias humanas ni de ciencias sociales. Tampoco toma en cuenta los altos índices de desempleo que actualmente existen en dicho campo de conocimiento. Por otro lado, y no menos grave, no expone con claridad sus sostenibilidad en términos de los recursos requeridos que hacen base presupuestal; es decir, no se sabe de dónde van a sacar las plazas de profesores de tiempo completo que se requieren para ofrecer una docencia de calidad. El presupuesto que supuestamente un a asignar no aumenta la base presupuestal; es decir, una vez se gaste no se seba qué pasará con los profesores a contratar. Así mismo, el proyecto carece de estudios adecuados de impacto en planta física, aumento en los servicios de bienestar y su costo, etc. Realmente la propuesta parece ser más una intención personal de un grupo de profesores con ansias de poder o, en otras palabras, con ansias de ser decanos.' },
+    { type: 'desacuerdo', text: 'Propuesta con grandes debilidades misionales (investigacion, extension, docencia), con estándares muy bajos.Preocupante.' },
+    { type: 'desacuerdo', text: 'Financiación, planta docente, pertinencia académica (considerando enfoque humanístico que ya tiene la Universidad de Caldas)' },
+    { type: 'desacuerdo', text: 'Debemos fortalecer las facultades que ya tenemos, la creación de una nueva generará más complejidades de todo tipo empezando por lo presupuestal y la infraestructura requerida.' },
+    { type: 'desacuerdo', text: 'No se ha socializado con la comunidad profesoral en los departamentos y facultades.' },
+    { type: 'desacuerdo', text: 'Considero que a pesar de haber sustentación teórica y académica de la nueva facultad, la universidad debe revisar de una manera muy juiciosa y detenida la viabilidad operativa y financiera de esa propuesta que a mi juicio no está bien determinada, pareciera ser un proyecto que se ejecute a toda costa sin tener una base sólida de financiación tanto a mediano como a largo plazo.' },
+    { type: 'desacuerdo', text: 'La Universidad debe ser responsable del manejo administrativo y financiero de todos los programas y proyectos, más en especial de los académicos.' },
+    { type: 'desacuerdo', text: 'No existe viabilidad económica para su creación.' },
+    { type: 'desacuerdo', text: 'Todo se desarrolló en afanes, no hay una planeación programática, parte de un programa con una población exigua que incide en la factibilidad financiera, con dificultades de vinculación laboral' },
+    { type: 'desacuerdo', text: 'Es una propuesta que NO responde a la realidad de la Sede, no reconoce las necesidades de la sociedad en la formación de nuestros jóvenes hoy, en la región existen muchos programas asociados a una facultad de ciencias humanas y sociales en universidades públicas.' },
+    { type: 'desacuerdo', text: 'Cada Universidad de Caldas. Además, no puede crearse una FCHS con programas de gestión tanto en pregrado como en posgrado.' },
+    { type: 'desacuerdo', text: 'Ello corresponde a facultades de Administración, es un adefesio epistemológico.' },
+    { type: 'desacuerdo', text: 'De otra parte su estudio que le da origen carece de un verdadero rigor académico y metodológico y más grave sin prospectiva universitaria.' },
+    { type: 'desacuerdo', text: 'No existe infraestructura, no existen recursos asegurados en el tiempo, existen facultades similares en la Universidad de Caldas, no soportan el proyecto estudios de admisión en estas áreas en la región y el país, hay alertas por baja admisión en universidades públicas y privadas en estas áreas.' },
+    { type: 'desacuerdo', text: 'La sede tiene programas y necesidades sin cubrir por carencia de presupuesto.' },
+    { type: 'desacuerdo', text: 'No hay dinero para pagar ocacionales en la FIA, por ejemplo.' },
+    { type: 'desacuerdo', text: 'Aunque no es la única razón para el aprendizaje, no hay estudios de empleabilidad, que es un factor que afecta la movilidad social que debería implicar un esfuerzo económico y financiero de las familias más pobres.' },
+    { type: 'desacuerdo', text: 'Las profesoras Representantes Profesorales ante el Consejo de Sede se han dado el trabajo de evaluar, alertar y mostrar lo improcedente de esta Facultad.' },
+    { type: 'desacuerdo', text: 'Yo como profesor de la Sede estoy en total desacuerdo con su creación, puesto que no tiene soporte académico relevante, afectará ostensiblemente los recursos de la Sede a futuro y no genera cadena de valor.' },
+    { type: 'desacuerdo', text: 'No es más que una imposición de esta Vicerrectoría, que parece tener un trasfondo oscuro y cuestionable.' },
+    { type: 'desacuerdo', text: 'No hay una propuesta clara, ni rigurosa' },
+    { type: 'desacuerdo', text: 'No hay investigación de mercados, ni presupuesto' },
+    { type: 'desacuerdo', text: 'Se deberían tener estudios de Mercado más claros para tomar la decisión' },
+    { type: 'desacuerdo', text: 'No hay un estudio de mercado previo, no se revisa la estadística de este tipo de facultad en cuanto a ingresos en los ultimos años, o por lo menos no lo presentan' },
+    { type: 'desacuerdo', text: 'La idea es que los programas Nuevos, no se solapada con los de la U de Caldas, mucho menos una facultad, esta sede se a caracterizado por ser principalmente, técnica.' },
+    { type: 'desacuerdo', text: 'Si ya esto es abordado por otras U\'s de la ciudad, para que "montarles competencia"... o es que hay un gran mercado laboral para los profesionales que de allí egresen ???' },
+    { type: 'desacuerdo', text: '¿Cuáles son los criterios de selección de los nuevos programas? ¿Cuál es su demanda y potencial de desarrollo?' },
+    { type: 'desacuerdo', text: '¿Cómo se va a financiar esta propuesta y qué razones académicas y financieras soportan la idea de separación de la Facultad de Administración?' },
+    { type: 'desacuerdo', text: 'Aparte de los programas de pregrado y posgrado, ¿cómo va a ser el despliegue en investigación y extensión?' },
+    { type: 'desacuerdo', text: 'Se duplican las facultdes y careras ya existentes en la Universidad de Caldas.' },
+    { type: 'desacuerdo', text: 'Los esfuerzos deben orientarde en fortalecer las Facultades ya existentes.' },
+    { type: 'dudas', text: 'Me preocupa la sostenibilidad financiera a futuro de la Facultad y la tibia proposición de innovación.' },
+    { type: 'dudas', text: 'La creación de una Facultad debe responder a necesidades académicas, contextuales, y pertinentes reales, no a promesas electoreras de las directivas que desconocen el devenir de un saber que posee una la memoria histórica, que con el tiempo ejerce una presión frente al sistema y órganos académicos y directivos universitarios, la creación de una facultad no se justifica solo diciendo que los profesores requieren un nicho académico, es tan subjetiva, además constituir una facultad desmantelando o anexando instancias que se consideran humanísticas o sociales, no es una argumentación seria, una facultad donde la participación es segada sólo a un grupo. Es necesario una propuesta que verdaderamente responda a las necesidades de formación no migrando programas de otras sedes, con profesores que seguirán con las mismas rutinas y mañas, sin actualización metodológica y mucho menos didáctica y pedagógica.' },
+    { type: 'dudas', text: 'Una propuesta seria de creación de la facultad nunca debe responder a "las cargas se arreglan en el camino" argumentos que evidencias la falta de consistencia de la propuesta.Muchas gracias.' },
+    { type: 'dudas', text: 'Financiación del nuevo programa' },
+    { type: 'dudas', text: 'NO existe ningún documento seriamente elaborado, con información rigurosa, que permita inferir si la creación de la Facultad es o no una idea necesaria para la sociedad, financieramente sostenible y académicamente pertinente.' },
+    { type: 'dudas', text: 'Sólo he visto profesores que argumentan que su trabajo histórico en el área o el no "torpedear" otros procesos el pasado constituyen requisitos suficientes o utilizan el chantaje mezquino de "grandeza histórica".' },
+    { type: 'dudas', text: 'La verdadera grandeza de un académico está en hacer lo correcto, en usar la ciencia como instrumento de decisión.' },
+    { type: 'dudas', text: 'Considero que hace falta una discusión más profunda sobre la pertinencia o no de la facultad mencionada, con el rigor académico que amerita la universidad' },
+    { type: 'dudas', text: 'Creo que puede generarse mucha burocracia e incremetar gastos de funcionamiento, poruqe mejor no crean mas programas del área y cuando tenga estudiantes y sean un grupo mayor si se analice la creación de la facultad.' },
+    { type: 'dudas', text: 'Esto lo pueden hacer al interior de la fac de adminstración mientras tanto' },
+    { type: 'dudas', text: 'El documento de creación fue objeto de observaciones muy específicas sobre su alcance, calidad y nivel de detalle. Para mí, la creación de esta o cualquier otra facultad no debe depender exclusivamente de criterios de "mercado" o utilidad, pero sí debe tener un espectro de posibilidades académicas sólidamente argumentadas. Es válido, pero no suficiente, considerar que es un viejo anhelo, pues de esos hay muchos en esta y otras sedes, pero no es el único criterio para impulsarla.' },
+    { type: 'dudas', text: 'Para justificar la creación de esta facultad, se propone ofrecer un programa en “Idiomas y Filología” (no recuerdo con exactitud el nombre), el cual, en mi opinión, es fácilmente reemplazable por herramientas de inteligencia artificial.Se crea esta carrera con el pretexto de otorgar plazas de tiempo completo a los actuales profesores de inglés de la sede, cuando en verdad ellos no necesariamente tendrían las plazas porque habría que hacer un concurso público de méritos.Estaría de acuerdo con esta iniciativa si se contemplara la apertura de programas académicos que no tengan equivalentes en otras sedes de la Universidad Nacional y que respondan a necesidades urgentes del país, tales como:* Antropología forense* Psicología forense* Desarrollo sostenible' },
+    { type: 'dudas', text: 'Creo que el comunicado de los representantes profesorales al consejo académico expresaron muy bien las razones por las cuales considero que no hay un análisis riguroso tanto técnico como financiero/administrativo para mostrar que la facultad es necesaria y pertiente.' },
+    { type: 'dudas', text: 'Entiendo las motivaciones de quienes fueron mis colegas en el Departamento de Ciencias Humanas para buscar una forma de “emancipación epistémica” respecto de la Facultad de Administración, cuyo objeto de estudio puede parecer, en efecto, en las antípodas de las ciencias sociales y humanas. También considero legítimos tanto el deseo de crecimiento profesional y académico de varios integrantes del colectivo, como los intereses de quienes integran el Centro de Idiomas.Sin embargo, en fases decisivas de construcción de la propuesta no se tuvieron en cuenta las voces de quienes integramos el Departamento de Ciencias Humanas. Esto resulta política y moralmente incoherente con uno de los principios que inspira la creación de la nueva Facultad: la integración y el fortalecimiento de las ciencias humanas y sociales.Hizo falta convocar a más espacios de discusión, con garantías reales de escucha —sin prejuicios y sin sofocar las voces contrarias—. Lamentablemente, algunos de quienes lideraron la propuesta adoptaron actitudes francamente violentas. Si se busca fomentar la expansión de las ciencias sociales y humanas, así como el cultivo de las Humanidades, estamos llamados a predicar con el ejemplo.Adicionalmente, el proceso ha estado marcado por una preocupante desinformación, ya que se han desestimado a priori objeciones valiosas. Entre ellas destaco:La objeción sobre la viabilidad financiera: resulta natural, como servidores públicos, preocuparnos por la existencia real de los recursos necesarios para financiar un proyecto de esta magnitud.La objeción sobre la planificación académica: más allá de los estudios de mercado que sugieren una buena acogida para carreras como Filología o Ciencias Políticas, inquieta que, tras varios años de existencia del programa de Gestión Cultural y Comunicativa, los procesos de acreditación de alta calidad aún no se hayan consolidado.Crear nuevos programas no puede responder únicamente a un anhelo de crecimiento institucional. Se requiere una justificación académica seria, comprometida con la excelencia y la responsabilidad pública.' },
+    { type: 'dudas', text: 'No estoy segura de la pertinencia de una nueva facultad, ni de los programas propuestos.' },
+    { type: 'dudas', text: 'Considero que no responden a ninguna de las expectativas que la sociedad tiene de nuestra sede y que, por el contrario, entra a duplicar esfuerzos que otras instituciones de la región ya adelantan con mas trayectoria y reconocimiento.' },
+    { type: 'dudas', text: 'Me preocupa que un programa como GESTIÓN CULTURAL Y COMUNICATIVA que, según su denominación y el perfil del egresado que se publica, pertenece al campo de la administración, sea puesto como punta de lanza de este proyecto.' },
+    { type: 'acuerdo', text: 'Es fundamental que se cree esta Facultad, no solo para la sede, sino para la ciudad e incluso para la región.' },
+    { type: 'acuerdo', text: 'Que no se vean afectadas las Facultades existentes, es decir, que no afecte la solicitud de presupuesto, instalaciones, laboratorios y personal en las facultades existentes, y que se garanticen nuevos recursos para la Sede, que no afecten a las Facultades existentes, que sea sostenible en personal docente y administrativo, y que realmente sea una necesidad de la región.' },
+    { type: 'acuerdo', text: 'Sin observaciones' },
+    { type: 'acuerdo', text: 'Tenemos una sede con base en las ciencias duras, que requieren una visión humanista,la cual escacea en la mayoría de programas,será de gran utilidad ampliar esos horizontes desde una perspectiva de un facultad cómo.la que se proponeEl mundo requiere de más humanismo y menos mercantilismo' },
+    { type: 'acuerdo', text: 'Falta capacidad-racionalidad en una minoría de profesores/as en entender la importancia de la creación de facultad de Ciencias Humanas y sociales, priorizando así la explosión emocional/hormonal en vez de la razónApertura de cupos, nuevas carreras, crecimiento de la región (y de la universidad). Todo queda atado a una polarización estéril de política de rector (Munera vs Peña) y a una "instrumentalizaciòn" de fichas útiles para oponerse a un proyecto en el que todos/as podemos aportar. En sintesis, mezquindad disfrazada de victimismo y déficit de visión que esconde casos de irregularidades administrativas (doble moral¡¡¡)' },
+    { type: 'acuerdo', text: 'Los programas se han empobrecido en la formación sobre ciencias humanas, es requerida la facultad y además exigir un presupuesto digno a nivel nacional para el funcionamiento de la sede Manizales.Da tristeza que se quejen de esta nueva Facultad apoyados(as) en una pelea por un problema que radica en los votos para rector de Diego Torres, que si actuara legalmente, debió haber votado por quien había ganado la consulta entre docentes (ese es el voto legal de a quienes representa).' },
+    { type: 'acuerdo', text: 'Todo lo que sea para crecer bienvenido. La Universidad Nacional de Colombia es pionera y reconocida por sus posturas en temas sociales.' },
+    { type: 'acuerdo', text: 'La sede Manizales y todas deben serlo también. Ya es hora de dejar de formar robots en Ciencia y pasar a formadores en ciencia pero pensando en la humanidad.' }
+  ];
+
+  const commentsByType = {
+    todos: allComments,
+    desacuerdo: allComments.filter(c => c.type === 'desacuerdo'),
+    dudas: allComments.filter(c => c.type === 'dudas'),
+    acuerdo: allComments.filter(c => c.type === 'acuerdo'),
+  };
+
+  const getCommentHeader = (type) => {
+    switch (type) {
+      case 'desacuerdo': return 'NO, NO ESTOY DE ACUERDO';
+      case 'dudas': return 'TENGO DUDAS';
+      case 'acuerdo': return 'SÍ, ESTOY DE ACUERDO';
+      default: return '';
+    }
+  };
+
+  const getCommentColors = (type) => {
+    switch (type) {
+      case 'desacuerdo': return 'bg-red-50 border-red-200 text-red-800';
+      case 'dudas': return 'bg-yellow-50 border-yellow-200 text-yellow-800';
+      case 'acuerdo': return 'bg-green-50 border-green-200 text-green-800';
+      default: return 'bg-gray-50 border-gray-200';
+    }
+  };
+
+
   useEffect(() => {
     // Cargar Chart.js
     const script = document.createElement('script');
@@ -1213,42 +1304,40 @@ const App: React.Component = () => {
                 <div className="p-5 bg-red-50 rounded-lg border border-red-200">
                   <h4 className="font-semibold text-gray-800 mb-3">
                     <i className="fas fa-university text-red-600 mr-2"></i>
-                    Objeciones Académicas
+                    Objeciones Académicas y de Pertinencia
                   </h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• Sin análisis riguroso de demanda real</li>
-                    <li>• Programas base en declive (Tabla 9)</li>
-                    <li>• Falacia sobre necesidad de facultad para investigación</li>
-                    <li>• Sin cifras de aspirantes históricos</li>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>• **Análisis de Demanda Insuficiente:** No se incluyeron "cifras históricas de aspirantes y las tasas de admisión", datos clave para validar la demanda real.</li>
+                    <li>• **Programas Base en Declive:** Se alertó que los programas base de la facultad están "en decadencia", haciendo ilógica la inversión en una nueva estructura.</li>
+                    <li>• **Falacia de la Estructura:** Se calificó como una falacia que una nueva facultad potencie la investigación, ya que esta "la proponen y desarrollan los profesores, NUNCA se da por lineamiento de la administración".</li>
                   </ul>
                 </div>
                 <div className="p-5 bg-red-50 rounded-lg border border-red-200">
                   <h4 className="font-semibold text-gray-800 mb-3">
                     <i className="fas fa-dollar-sign text-red-600 mr-2"></i>
-                    Objeciones Financieras
+                    Objeciones Financieras y de Viabilidad
                   </h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• Discrepancia de $7,000M entre documentos</li>
-                    <li>• Falacia de "pérdida de recursos"</li>
-                    <li>• Inversión exagerada para 45 matrículas/año</li>
-                    <li>• Sin CDP específico presentado</li>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>• **Inconsistencia Inaceptable:** Discrepancia de $7 mil millones entre la propuesta ($12.9 mil millones a 4 años) y el Plan de Acción ($20 mil millones a 3 años), sin aclaración alguna.</li>
+                    <li>• **Falacia de "Pérdida de Recursos":** Se desmintió que los recursos se "perderían", demostrando que "no se puede 'perder' un recurso que no ha sido 'asignado' legalmente".</li>
+                    <li>• **Inversión Exagerada:** El proyecto se calificó como una "inversión exagerada a todas luces" para un bajo impacto de solo "45 matrículas nuevas" al año.</li>
                   </ul>
                 </div>
                 <div className="p-5 bg-red-50 rounded-lg border border-red-200">
                   <h4 className="font-semibold text-gray-800 mb-3">
                     <i className="fas fa-gavel text-red-600 mr-2"></i>
-                    Objeciones de Procedimiento
+                    Objeciones de Procedimiento y Transparencia
                   </h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• Respuestas evasivas a derechos de petición</li>
-                    <li>• Respuesta post-votación del CA</li>
-                    <li>• Impedimento a deliberación informada</li>
-                    <li>• Incumplimiento mandato asamblea</li>
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>• **Respuestas Evasivas:** Las respuestas a derechos de petición "fueron siempre evasivas y nunca aportaron la certeza presupuestal requerida".</li>
+                    <li>• **Impedimento a la Deliberación:** La Vicerrectoría respondió a solicitudes clave horas *después* de que el Consejo Académico ya había votado, en un acto "a todas luces extemporáneo".</li>
+                    <li>• **Incumplimiento de Mandato:** Se ignoró el mandato de la Asamblea Profesoral que condicionaba el apoyo a un proceso de concertación real.</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
+
 
           <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
             <div className="p-6 border-b border-gray-200">
@@ -1291,14 +1380,6 @@ const App: React.Component = () => {
                       <td className="p-3 border-b border-gray-200">Cuestionamiento cifras y viabilidad</td>
                       <td className="p-3 border-b border-gray-200">
                         <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-semibold">RESPUESTA EVASIVA</span>
-                      </td>
-                    </tr>
-                    <tr className="hover:bg-gray-50">
-                      <td className="p-3 border-b border-gray-200 font-semibold">REP.PROF.025</td>
-                      <td className="p-3 border-b border-gray-200">Febrero 2025</td>
-                      <td className="p-3 border-b border-gray-200">Solicitud subsanación urgente</td>
-                      <td className="p-3 border-b border-gray-200">
-                        <span className="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-semibold">RESPUESTA POST-VOTACIÓN</span>
                       </td>
                     </tr>
                     <tr className="hover:bg-gray-50">
@@ -1419,51 +1500,6 @@ const App: React.Component = () => {
               </div>
             </div>
           </div>
-          
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
-            <div className="p-6 border-b border-gray-200">
-              <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-3">
-                <i className="fas fa-comments text-[#94B43B]"></i>
-                Comentarios y Observaciones de la Encuesta
-              </h3>
-            </div>
-            <div className="p-6">
-              <div className="mb-8">
-                <h4 className="text-lg font-bold text-red-700 mb-4">Comentarios de Docentes en Desacuerdo</h4>
-                <div className="space-y-3 text-sm text-gray-700">
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">CREO QUE NO ES PERTINENTE Y EL DINERO PUBLICO NO PUEDE INVERTIRSE EN CAPRICHITOS DE UNOS DOCENTES ABURRIDOS</p>
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">La actual administración no ha sido clara con los procesos y los recursos, además es proceso inequitativo frente a como se han desarrollado históricamente contrataciones y programas en otras facultades.</p>
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Es un propuesta inmediatista, llena incongruencias y elaborada sin rigor académico y técnico.</p>
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">La propuesta carece de rigor académico. No hace un análisis real de las necesidades de formación regionales ni en las áreas de ciencias humanas ni de ciencias sociales. Tampoco toma en cuenta los altos índices de desempleo que actualmente existen en dicho campo de conocimiento. Por otro lado, y no menos grave, no expone con claridad sus sostenibilidad en términos de los recursos requeridos que hacen base presupuestal; es decir, no se sabe de dónde van a sacar las plazas de profesores de tiempo completo que se requieren para ofrecer una docencia de calidad. El presupuesto que supuestamente un a asignar no aumenta la base presupuestal; es decir, una vez se gaste no se seba qué pasará con los profesores a contratar. Así mismo, el proyecto carece de estudios adecuados de impacto en planta física, aumento en los servicios de bienestar y su costo, etc. Realmente la propuesta parece ser más una intención personal de un grupo de profesores con ansias de poder o, en otras palabras, con ansias de ser decanos.</p>
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Propuesta con grandes debilidades misionales (investigacion, extension, docencia), con estándares muy bajos.Preocupante.</p>
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Financiación, planta docente, pertinencia académica (considerando enfoque humanístico que ya tiene la Universidad de Caldas)</p>
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">Debemos fortalecer las facultades que ya tenemos, la creación de una nueva generará más complejidades de todo tipo empezando por lo presupuestal y la infraestructura requerida.</p>
-                  <p className="p-3 bg-red-50 border-l-4 border-red-200 rounded">No se ha socializado con la comunidad profesoral en los departamentos y facultades.</p>
-                </div>
-              </div>
-              <div className="mb-8">
-                <h4 className="text-lg font-bold text-yellow-700 mb-4">Comentarios de Docentes con Dudas</h4>
-                <div className="space-y-3 text-sm text-gray-700">
-                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">Me preocupa la sostenibilidad financiera a futuro de la Facultad y la tibia proposición de innovación.</p>
-                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">La creación de una Facultad debe responder a necesidades académicas, contextuales, y pertinentes reales, no a promesas electoreras de las directivas que desconocen el devenir de un saber que posee una la memoria histórica...</p>
-                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">Financiación del nuevo programa</p>
-                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">NO existe ningún documento seriamente elaborado, con información rigurosa, que permita inferir si la creación de la Facultad es o no una idea necesaria para la sociedad, financieramente sostenible y académicamente pertinente.</p>
-                  <p className="p-3 bg-yellow-50 border-l-4 border-yellow-200 rounded">Considero que hace falta una discusión más profunda sobre la pertinencia o no de la facultad mencionada, con el rigor académico que amerita la universidad.</p>
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-bold text-green-700 mb-4">Comentarios de Docentes de Acuerdo</h4>
-                <div className="space-y-3 text-sm text-gray-700">
-                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Es fundamental que se cree esta Facultad, no solo para la sede, sino para la ciudad e incluso para la región.</p>
-                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Que no se vean afectadas las Facultades existentes, es decir, que no afecte la solicitud de presupuesto, instalaciones, laboratorios y personal en las facultades existentes, y que se garanticen nuevos recursos para la Sede...</p>
-                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Sin observaciones</p>
-                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Tenemos una sede con base en las ciencias duras, que requieren una visión humanista,la cual escacea en la mayoría de programas,será de gran utilidad ampliar esos horizontes desde una perspectiva de un facultad cómo.la que se proponeEl mundo requiere de más humanismo y menos mercantilismo</p>
-                  <p className="p-3 bg-green-50 border-l-4 border-green-200 rounded">Falta capacidad-racionalidad en una minoría de profesores/as en entender la importancia de la creación de facultad de Ciencias Humanas y sociales, priorizando así la explosión emocional/hormonal en vez de la razónApertura de cupos, nuevas carreras, crecimiento de la región (y de la universidad).</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
 
           <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
             <div className="p-6 border-b border-gray-200">
@@ -1595,6 +1631,38 @@ const App: React.Component = () => {
               </div>
             </div>
           </div>
+          
+          {/* SECCIÓN DE COMENTARIOS AGREGADA */}
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div className="p-6 border-b border-gray-200">
+              <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-3">
+                <i className="fas fa-comment-dots text-[#94B43B]"></i>
+                Comentarios de la Encuesta Profesoral
+              </h3>
+              <p className='text-sm text-gray-500 mt-1'>Total: 59 comentarios válidos</p>
+            </div>
+            <div className="p-6">
+              <div className="flex flex-wrap gap-2 mb-6">
+                <button onClick={() => setVisibleComments('todos')} className={`px-4 py-2 text-sm rounded-full transition-all ${visibleComments === 'todos' ? 'bg-gray-700 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}>Todos ({commentsByType.todos.length})</button>
+                <button onClick={() => setVisibleComments('desacuerdo')} className={`px-4 py-2 text-sm rounded-full transition-all ${visibleComments === 'desacuerdo' ? 'bg-red-700 text-white' : 'bg-red-100 text-red-700 hover:bg-red-200'}`}>En Desacuerdo ({commentsByType.desacuerdo.length})</button>
+                <button onClick={() => setVisibleComments('dudas')} className={`px-4 py-2 text-sm rounded-full transition-all ${visibleComments === 'dudas' ? 'bg-yellow-500 text-white' : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'}`}>Con Dudas ({commentsByType.dudas.length})</button>
+                <button onClick={() => setVisibleComments('acuerdo')} className={`px-4 py-2 text-sm rounded-full transition-all ${visibleComments === 'acuerdo' ? 'bg-green-700 text-white' : 'bg-green-100 text-green-700 hover:bg-green-200'}`}>De Acuerdo ({commentsByType.acuerdo.length})</button>
+              </div>
+              
+              <div className="space-y-4">
+                {commentsByType[visibleComments].map((comment, index) => (
+                  <div key={index} className={`p-4 border-l-4 rounded-r-lg ${getCommentColors(comment.type)}`}>
+                    <div className={`text-xs font-bold uppercase mb-2 px-2 py-0.5 rounded-full inline-block ${getCommentColors(comment.type)}`}>
+                      {getCommentHeader(comment.type)}
+                    </div>
+                    <p className="text-gray-800 text-sm">{comment.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+
         </div>
 
         {/* Tab 8: Ficha Técnica */}
@@ -1870,7 +1938,7 @@ const App: React.Component = () => {
                       <p className="text-sm text-gray-600">Representación Profesoral</p>
                     </div>
                   </li>
-                  <li className="flex items-center p-3 border-b border-gray-100">
+                  <li className="flex items-center p-3">
                     <i className="fas fa-file-excel text-green-600 mr-3"></i>
                     <div>
                       <strong>Encuesta Profesoral</strong>
