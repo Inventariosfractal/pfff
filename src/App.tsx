@@ -1307,9 +1307,10 @@ const App: React.Component = () => {
                     Objeciones Académicas y de Pertinencia
                   </h4>
                   <ul className="text-sm text-gray-700 space-y-2">
-                    <li>• **Análisis de Demanda Insuficiente:** No se incluyeron "cifras históricas de aspirantes y las tasas de admisión", datos clave para validar la demanda real.</li>
-                    <li>• **Programas Base en Declive:** Se alertó que los programas base de la facultad están "en decadencia", haciendo ilógica la inversión en una nueva estructura.</li>
-                    <li>• **Falacia de la Estructura:** Se calificó como una falacia que una nueva facultad potencie la investigación, ya que esta "la proponen y desarrollan los profesores, NUNCA se da por lineamiento de la administración".</li>
+                    <li><strong>Análisis de Demanda Insuficiente:</strong> No se incluyeron "cifras históricas de aspirantes y las tasas de admisión", datos clave para validar la demanda real.</li>
+                    <li><strong>Programas Base en Declive:</strong> Se alertó que los programas base de la facultad están "en decadencia", haciendo ilógica la inversión en una nueva estructura.</li>
+                    <li><strong>Falacia de la Estructura:</strong> Se calificó como una falacia que una nueva facultad potencie la investigación, ya que esta "la proponen y desarrollan los profesores, NUNCA se da por lineamiento de la administración".</li>
+                    <li><strong>Debilidades en Investigación y Extensión:</strong> La información sobre grupos de investigación y experiencia en extensión no demuestra si la facultad podrá generar recursos para participar en contrapartidas y/o tener una producción académica que le permita ser autosostenible.</li>
                   </ul>
                 </div>
                 <div className="p-5 bg-red-50 rounded-lg border border-red-200">
@@ -1318,9 +1319,9 @@ const App: React.Component = () => {
                     Objeciones Financieras y de Viabilidad
                   </h4>
                   <ul className="text-sm text-gray-700 space-y-2">
-                    <li>• **Inconsistencia Inaceptable:** Discrepancia de $7 mil millones entre la propuesta ($12.9 mil millones a 4 años) y el Plan de Acción ($20 mil millones a 3 años), sin aclaración alguna.</li>
-                    <li>• **Falacia de "Pérdida de Recursos":** Se desmintió que los recursos se "perderían", demostrando que "no se puede 'perder' un recurso que no ha sido 'asignado' legalmente".</li>
-                    <li>• **Inversión Exagerada:** El proyecto se calificó como una "inversión exagerada a todas luces" para un bajo impacto de solo "45 matrículas nuevas" al año.</li>
+                    <li><strong>Inconsistencia Inaceptable:</strong> Discrepancia de $7 mil millones entre la propuesta ($12.9 mil millones a 4 años) y el Plan de Acción ($20 mil millones a 3 años), sin aclaración alguna.</li>
+                    <li><strong>Engaño en la condición del recurso:</strong> Se desmintió que los recursos se "perderían" si la facultad no se aprobaba por ser de "destinación específica", argumento que incidió directamente en la aprobación del proyecto en espacios asamblearios.</li>
+                    <li><strong>Inversión Exagerada:</strong> El proyecto se calificó como una "inversión exagerada a todas luces" para un bajo impacto de solo "90 matrículas nuevas" al año.</li>
                   </ul>
                 </div>
                 <div className="p-5 bg-red-50 rounded-lg border border-red-200">
@@ -1329,9 +1330,9 @@ const App: React.Component = () => {
                     Objeciones de Procedimiento y Transparencia
                   </h4>
                   <ul className="text-sm text-gray-700 space-y-2">
-                    <li>• **Respuestas Evasivas:** Las respuestas a derechos de petición "fueron siempre evasivas y nunca aportaron la certeza presupuestal requerida".</li>
-                    <li>• **Impedimento a la Deliberación:** La Vicerrectoría respondió a solicitudes clave horas *después* de que el Consejo Académico ya había votado, en un acto "a todas luces extemporáneo".</li>
-                    <li>• **Incumplimiento de Mandato:** Se ignoró el mandato de la Asamblea Profesoral que condicionaba el apoyo a un proceso de concertación real.</li>
+                    <li><strong>Respuestas Evasivas:</strong> Las respuestas a derechos de petición "fueron siempre evasivas y nunca aportaron la certeza presupuestal requerida".</li>
+                    <li><strong>Impedimento a la Deliberación:</strong> La Vicerrectoría respondió a solicitudes clave horas *después* de que el Consejo Académico ya había votado, en un acto "a todas luces extemporáneo".</li>
+                    <li><strong>Incumplimiento de Mandato:</strong> Se ignoró el mandato de la Asamblea Profesoral que condicionaba el apoyo a un proceso de concertación real.</li>
                   </ul>
                 </div>
               </div>
@@ -1618,7 +1619,7 @@ const App: React.Component = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
             <div className="p-6 border-b border-gray-200">
               <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-3">
                 <i className="fas fa-comments text-[#94B43B]"></i>
